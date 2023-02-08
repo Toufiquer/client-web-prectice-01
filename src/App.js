@@ -8,6 +8,7 @@ import NotFound from "./components/NotFound/NotFound";
 import { ToastContainer } from "react-toastify";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
+import Products from "./components/Products/Products";
 function App() {
   return (
     <div className={`min-h-screen w-full bg-slate-800 text-slate-50`}>
@@ -19,6 +20,14 @@ function App() {
           element={
             <RequireAuth>
               <PrivateRoute></PrivateRoute>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/products"
+          element={
+            <RequireAuth>
+              <Products></Products>
             </RequireAuth>
           }
         ></Route>

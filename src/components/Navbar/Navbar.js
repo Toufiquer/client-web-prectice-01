@@ -30,6 +30,9 @@ const Navbar = () => {
               <CustomLink to="/private">Private</CustomLink>
             </li>
             <li>
+              <CustomLink to="/products">Products</CustomLink>
+            </li>
+            <li>
               {!user ? (
                 <CustomLink to="/logIn">LogIn</CustomLink>
               ) : (
