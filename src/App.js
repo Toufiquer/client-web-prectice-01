@@ -9,17 +9,27 @@ import { ToastContainer } from "react-toastify";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import Products from "./components/Products/Products";
+import TitleCompo from "./components/TitleCompo/TitleCompo";
 function App() {
   return (
     <div className={`min-h-screen w-full bg-slate-800 text-slate-50`}>
       <Navbar></Navbar>
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
+        <Route
+          path="/"
+          element={
+            <TitleCompo headerTitle="Home">
+              <Home></Home>
+            </TitleCompo>
+          }
+        ></Route>
         <Route
           path="/private"
           element={
             <RequireAuth>
-              <PrivateRoute></PrivateRoute>
+              <TitleCompo headerTitle="Private">
+                <PrivateRoute></PrivateRoute>
+              </TitleCompo>
             </RequireAuth>
           }
         ></Route>
@@ -27,12 +37,28 @@ function App() {
           path="/products"
           element={
             <RequireAuth>
-              <Products></Products>
+              <TitleCompo headerTitle="Products">
+                <Products></Products>
+              </TitleCompo>
             </RequireAuth>
           }
         ></Route>
-        <Route path="/logIn" element={<LogIn></LogIn>}></Route>
-        <Route path="*" element={<NotFound></NotFound>}></Route>
+        <Route
+          path="/logIn"
+          element={
+            <TitleCompo headerTitle="LogIn">
+              <LogIn></LogIn>
+            </TitleCompo>
+          }
+        ></Route>
+        <Route
+          path="*"
+          element={
+            <TitleCompo headerTitle="NotFound">
+              <NotFound></NotFound>
+            </TitleCompo>
+          }
+        ></Route>
       </Routes>
       <ToastContainer />
     </div>
