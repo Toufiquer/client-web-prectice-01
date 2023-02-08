@@ -4,12 +4,14 @@ import auth from "../../utilities/firebase";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import Loading from "../Loading/Loading";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const customIdError = "custom-id-for-error";
 const customIdSuccess = "custom-id-for-Success";
 const LogIn = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   if (loading) {
     return <Loading />;
   } else if (error) {
@@ -20,7 +22,7 @@ const LogIn = () => {
     toast.success("Logged in successfully", {
       toastId: customIdSuccess,
     });
-    navigate("/");
+    navigate(from, { replace: true });
   }
   return (
     <div className={`min-h-screen w-full flex items-center justify-center`}>
