@@ -1,10 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/Home/Home";
 import LogIn from "./components/LogIn/LogIn";
 import Navbar from "./components/Navbar/Navbar";
 import NotFound from "./components/NotFound/NotFound";
-
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div className={`min-h-screen w-full bg-slate-800 text-slate-50`}>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/logIn" element={<LogIn></LogIn>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }
