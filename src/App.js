@@ -6,12 +6,14 @@ import LogIn from "./components/LogIn/LogIn";
 import Navbar from "./components/Navbar/Navbar";
 import NotFound from "./components/NotFound/NotFound";
 import { ToastContainer } from "react-toastify";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 function App() {
   return (
     <div className={`min-h-screen w-full bg-slate-800 text-slate-50`}>
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/private" element={<PrivateRoute></PrivateRoute>}></Route>
         <Route path="/logIn" element={<LogIn></LogIn>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
