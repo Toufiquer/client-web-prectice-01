@@ -1,4 +1,3 @@
-import { Button } from "flowbite-react";
 import React, { useContext } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
