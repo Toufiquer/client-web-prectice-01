@@ -10,58 +10,74 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import Products from "./components/Products/Products";
 import TitleCompo from "./components/TitleCompo/TitleCompo";
+import { createContext, useEffect, useState } from "react";
+import ThemeData from "./utilities/Theme/ThemeData";
+const ThemeModeContext = createContext();
+const ThemeDataContext = createContext();
 function App() {
+  const [dataThemeMode, setDataThemeMode] = useState("dark");
+  const [dataThemeData, setDataThemeData] = useState({});
+  useEffect(() => {
+    const getThemeData = ThemeData("light");
+    setDataThemeData(getThemeData);
+  }, []);
   return (
-    <div className={`min-h-screen w-full bg-slate-800 text-slate-50`}>
-      <Navbar></Navbar>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <TitleCompo headerTitle="Home">
-              <Home></Home>
-            </TitleCompo>
-          }
-        ></Route>
-        <Route
-          path="/private"
-          element={
-            <RequireAuth>
-              <TitleCompo headerTitle="Private">
-                <PrivateRoute></PrivateRoute>
-              </TitleCompo>
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/products"
-          element={
-            <RequireAuth>
-              <TitleCompo headerTitle="Products">
-                <Products></Products>
-              </TitleCompo>
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/logIn"
-          element={
-            <TitleCompo headerTitle="LogIn">
-              <LogIn></LogIn>
-            </TitleCompo>
-          }
-        ></Route>
-        <Route
-          path="*"
-          element={
-            <TitleCompo headerTitle="NotFound">
-              <NotFound></NotFound>
-            </TitleCompo>
-          }
-        ></Route>
-      </Routes>
-      <ToastContainer />
-    </div>
+    <>
+      <ThemeModeContext.Provider value={{ dataThemeMode, setDataThemeMode }}>
+        <ThemeDataContext.Provider value={{ dataThemeData, setDataThemeData }}>
+          <div className={`min-h-screen w-full bg-slate-800 text-slate-50`}>
+            <Navbar></Navbar>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <TitleCompo headerTitle="Home">
+                    <Home></Home>
+                  </TitleCompo>
+                }
+              ></Route>
+              <Route
+                path="/private"
+                element={
+                  <RequireAuth>
+                    <TitleCompo headerTitle="Private">
+                      <PrivateRoute></PrivateRoute>
+                    </TitleCompo>
+                  </RequireAuth>
+                }
+              ></Route>
+              <Route
+                path="/products"
+                element={
+                  <RequireAuth>
+                    <TitleCompo headerTitle="Products">
+                      <Products></Products>
+                    </TitleCompo>
+                  </RequireAuth>
+                }
+              ></Route>
+              <Route
+                path="/logIn"
+                element={
+                  <TitleCompo headerTitle="LogIn">
+                    <LogIn></LogIn>
+                  </TitleCompo>
+                }
+              ></Route>
+              <Route
+                path="*"
+                element={
+                  <TitleCompo headerTitle="NotFound">
+                    <NotFound></NotFound>
+                  </TitleCompo>
+                }
+              ></Route>
+            </Routes>
+            <ToastContainer />
+          </div>
+        </ThemeDataContext.Provider>
+      </ThemeModeContext.Provider>
+    </>
   );
 }
 
