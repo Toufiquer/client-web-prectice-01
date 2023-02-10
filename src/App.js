@@ -18,14 +18,16 @@ function App() {
   const [dataThemeMode, setDataThemeMode] = useState("dark");
   const [dataThemeData, setDataThemeData] = useState({});
   useEffect(() => {
-    const getThemeData = ThemeData("light");
+    const getThemeData = ThemeData("dark");
     setDataThemeData(getThemeData);
   }, []);
+
+  const { background } = dataThemeData;
   return (
     <>
       <ThemeModeContext.Provider value={{ dataThemeMode, setDataThemeMode }}>
         <ThemeDataContext.Provider value={{ dataThemeData, setDataThemeData }}>
-          <div className={`min-h-screen w-full bg-slate-800 text-slate-50`}>
+          <div className={`min-h-screen w-full ${background} text-slate-50`}>
             <Navbar></Navbar>
             <Routes>
               <Route
@@ -80,5 +82,5 @@ function App() {
     </>
   );
 }
-
+export { ThemeDataContext, ThemeModeContext };
 export default App;

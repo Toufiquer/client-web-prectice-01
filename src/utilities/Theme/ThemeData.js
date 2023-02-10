@@ -1,14 +1,23 @@
 const ThemeData = (themeMode) => {
-  let backGround, backGroundI, text, textI;
+  let background, backgroundI, text, textI, hoverText;
   switch (themeMode) {
     case "light":
-      backGround = "bg-blue-400";
-      backGroundI = "bg-blue-500";
-      text = "font-gray-500";
-      textI = "font-gray-600";
+      background = "bg-blue-400";
+      backgroundI = "bg-blue-500";
+      text = "text-gray-600";
+      textI = "text-gray-700";
+      hoverText = "hover:text-gray-900";
+      break;
+    case "dark":
+    default:
+      background = "bg-gray-700";
+      backgroundI = "bg-gray-800";
+      text = "text-blue-500";
+      textI = "text-blue-600";
+      hoverText = "hover:text-blue-400";
       break;
   }
-  return { backGround, backGroundI, text, textI };
+  return { background, backgroundI, text, textI, hoverText };
 };
 
 export default ThemeData;
