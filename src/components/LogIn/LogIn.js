@@ -1,5 +1,5 @@
 import { Button } from "flowbite-react";
-import React from "react";
+import React,{useEffect} from "react";
 import auth from "../../utilities/firebase";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import Loading from "../Loading/Loading";
@@ -12,17 +12,18 @@ const LogIn = () => {
   const navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
+  useEffect(()=>{if (user) {
+    toast.success("Logged in successfully", {
+      toastId: customIdSuccess,
+    });
+    navigate(from, { replace: true });
+  }},[])
   if (loading) {
     return <Loading />;
   } else if (error) {
     toast.error(error?.message, {
       toastId: customIdError,
     });
-  } else if (user) {
-    toast.success("Logged in successfully", {
-      toastId: customIdSuccess,
-    });
-    navigate(from, { replace: true });
   }
   return (
     <div className={`min-h-screen w-full flex items-center justify-center`}>
