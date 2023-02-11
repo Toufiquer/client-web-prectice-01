@@ -9,6 +9,9 @@ const ProductsCart = () => {
     <div className={` ${border} ${text} p-4`}>
       <h2 className={` text-center text-2xl font-thin`}>Products Cart</h2>
       <div className={`p-2 ${border} ${hoverText} mt-4 cursor-pointer`}>
+        <Link to="/products/allProducts">All Products</Link>
+      </div>
+      <div className={`p-2 ${border} ${hoverText} mt-4 cursor-pointer`}>
         <Link to="/products/addProduct"> Add New Product ++</Link>
       </div>
     </div>

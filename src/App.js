@@ -14,6 +14,8 @@ import { createContext, useEffect, useState } from "react";
 import ThemeData from "./utilities/Theme/ThemeData";
 import AddProduct from "./components/Products/AddProduct";
 import UpdateProduct from "./components/Products/UpdateProduct";
+import AllProducts from "./components/Products/AllProducts";
+import Test from "./components/Test/Test";
 const ThemeModeContext = createContext();
 const ThemeDataContext = createContext();
 function App() {
@@ -41,6 +43,14 @@ function App() {
                 }
               ></Route>
               <Route
+                path="/test"
+                element={
+                  <TitleCompo headerTitle="Test">
+                    <Test></Test>
+                  </TitleCompo>
+                }
+              ></Route>
+              <Route
                 path="/private"
                 element={
                   <RequireAuth>
@@ -61,6 +71,16 @@ function App() {
                 }
               ></Route>
               <Route
+                path="/products/allProducts"
+                element={
+                  <RequireAuth>
+                    <TitleCompo headerTitle="All Product">
+                      <AllProducts></AllProducts>
+                    </TitleCompo>
+                  </RequireAuth>
+                }
+              ></Route>
+              <Route
                 path="/products/addProduct"
                 element={
                   <RequireAuth>
@@ -74,7 +94,7 @@ function App() {
                 path="/products/updateProduct/:id"
                 element={
                   <RequireAuth>
-                    <TitleCompo headerTitle="Add New Product">
+                    <TitleCompo headerTitle="Update Product">
                       <UpdateProduct></UpdateProduct>
                     </TitleCompo>
                   </RequireAuth>

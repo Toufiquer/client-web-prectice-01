@@ -1,14 +1,27 @@
+import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { ThemeDataContext } from "../../App";
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    axios
+      .post("http://localhost:5000/addProduct", { data })
+      .then(function (response) {
+        if (response?.data?.cursor?.insertedId) {
+          toast.success("Product Added Successfully", {
+            toastId: "success-toast-add-product",
+          });
+        }
+      })
+      .catch(function (error) {
+        toast.error(error, {
+          toastId: "error-toast-add-product",
+        });
+      });
   };
-
   const { dataThemeData } = useContext(ThemeDataContext);
-
   const { border, text, button } = dataThemeData;
   return (
     <div>
