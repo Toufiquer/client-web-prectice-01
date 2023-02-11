@@ -13,6 +13,7 @@ import TitleCompo from "./components/TitleCompo/TitleCompo";
 import { createContext, useEffect, useState } from "react";
 import ThemeData from "./utilities/Theme/ThemeData";
 import AddProduct from "./components/Products/AddProduct";
+import UpdateProduct from "./components/Products/UpdateProduct";
 const ThemeModeContext = createContext();
 const ThemeDataContext = createContext();
 function App() {
@@ -65,6 +66,16 @@ function App() {
                   <RequireAuth>
                     <TitleCompo headerTitle="Add New Product">
                       <AddProduct></AddProduct>
+                    </TitleCompo>
+                  </RequireAuth>
+                }
+              ></Route>
+              <Route
+                path="/products/updateProduct/:id"
+                element={
+                  <RequireAuth>
+                    <TitleCompo headerTitle="Add New Product">
+                      <UpdateProduct></UpdateProduct>
                     </TitleCompo>
                   </RequireAuth>
                 }

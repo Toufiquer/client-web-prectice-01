@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { ThemeDataContext } from "../../App";
-const AddProduct = () => {
+const UpdateProduct = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
@@ -15,7 +15,9 @@ const AddProduct = () => {
       <div
         className={`w-[600px] mx-auto ${border} ${text} p-4 flex flex-col mt-4`}
       >
-        <h2 className={` text-2xl font-thin text-center mb-4`}>Add Product</h2>
+        <h2 className={` text-2xl font-thin text-center mb-4`}>
+          Update Product
+        </h2>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className={` flex flex-col gap-2`}
@@ -32,11 +34,15 @@ const AddProduct = () => {
             defaultValue=""
             {...register("productDescription")}
           />
-          <input className={`${button}`} type="submit" value={"Add Product"} />
+          <input
+            className={`${button}`}
+            type="submit"
+            value={"Update Product"}
+          />
         </form>
       </div>
     </div>
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;
