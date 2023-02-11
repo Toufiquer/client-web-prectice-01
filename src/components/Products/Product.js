@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { ThemeDataContext } from "../../App";
 
 const Product = ({ product, deleteOne }) => {
+  console.log(product, " => Line No: 7");
   const [toggle, setToggle] = useState(false);
   //   console.log(product, " => Line No: 5");
   const { dataThemeData } = useContext(ThemeDataContext);
-  const { productName, productDescription } = product.data;
+  const { productName, productDescription } = product?.data;
   const onClick = () => {
     setToggle(!toggle);
   };

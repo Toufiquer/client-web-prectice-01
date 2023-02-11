@@ -11,8 +11,10 @@ const AddProduct = () => {
       .then(function (response) {
         if (response?.data?.cursor?.insertedId) {
           toast.success("Product Added Successfully", {
-            toastId: "success-toast-add-product",
+            toastId: `${response?.data?.cursor?.insertedId}`,
           });
+          data.productName = "";
+          data.productDescription = "";
         }
       })
       .catch(function (error) {
